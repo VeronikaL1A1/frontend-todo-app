@@ -6,22 +6,16 @@ import Todo from './Todo.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Todo/>
+    <div className="App p-3">
+      
+      <Todo title="Nakupny zoznam" createdAt="23.5.2017" finished={true}>
+        <ul>
+          <li>Cokolada</li>
+          <li>Pralinky</li>
+          <li>Vino</li>
+       </ul>
+      </Todo>
+      <Todo title="Uprac byt" createdAt="5.7.2019" finished={false}/>
     </div>
   );
 }

@@ -1,27 +1,40 @@
 import React,{Component} from 'react';
 
 class Todo extends Component{
+    renderText = () => {
+        const{children} = this.props;
+        if(!children) return null;
+        return(<p className="card-text">
+            {children}
+        </p>)
+    }
     render() {
+        const {title,createdAt,finished} = this.props;
+        let classes='card'
+        if (finished) classes += ' border-success'
+        // daj pozor na mezdeu pred boder success pri oddelovani classes ,aby to nebola jedn super dlha classa
+        console.log(this.props);
         return (
             <div className="Todo">
-                <div className="card">
+                <div className={classes}>
                     <div className="card-body">
                         <h5 className="card-title">
-                            Nakupny zoznam
+                            {title}
                         </h5>
                         <h6 className="card-subtitle mb-2 text-muted">
-                            Vytvorene dna 30.7.2019
+                            {createdAt}
                         </h6>
+                        {/* {children ? 
                         <p className="card-text">
-                            <ul>
-                                <li>Cokolada</li>
-                                <li>Pralinky</li>
-                                <li>Vino</li>
-                            </ul>
+                         {children}
                         </p>
+                        :null} */}
+                        {this.renderText()}
+                        <button className="btn btn-light">Zmazat</button>
+                        {!this.props.finished?<button className="btn btn-success float-right">Dokoncit</button>:null}
                     </div>
                 </div>
-            </div>
+            </div> 
         )
     }
 }
